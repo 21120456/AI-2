@@ -23,8 +23,8 @@ MAPS_DIR   = BASE_DIR + '/maps'
 ASSETS_DIR = BASE_DIR + '/assets/' + ASSETS_THEME
 
 # GUI: constants
-TILE_SIZE   = 64
-WINDOW_UNIT = 16
+TILE_SIZE   = 32
+WINDOW_UNIT = 8
 
 # GUI: onboarding messages (status, log)
 ONBOARDING_MSG = [
@@ -38,6 +38,7 @@ OPEN A MAP TO BEGIN.
 Use the buttons on GUI, or press the following keys:
 [Z] Open  : open a mapfile
 [X] Reset : reset the game
+
 [C] Step  : advance current game by one step
 [V] Play  : toggle autostep mode
 
