@@ -2,15 +2,16 @@
 # The main program.
 
 # Configurables
-ASSETS_THEME      = 'thiagodnf'
+ASSETS_THEME      = 'images'
+
 TILES_SHOW_HIDDEN = True
 WINDOW_TITLE      = 'Wumpus World'
 FONT              = 'Consolas'
-AUTOSTEP_DELAY    = 100 # ms
-KEYB_OPEN         = 'z'
-KEYB_RESET        = 'x'
-KEYB_STEP         = 'c'
-KEYB_AUTOSTEP     = 'v'
+AUTOSTEP_DELAY    = 105 # ms
+KEYB_OPEN         = 'o'
+KEYB_RESET        = 'r'
+KEYB_STEP         = 's'
+KEYB_AUTOSTEP     = 'p'
 
 ####################
 
@@ -36,10 +37,10 @@ OPEN A MAP TO BEGIN.
 # (Log) keyboard shortcut hints
 """
 Use the buttons on GUI, or press the following keys:
-[Z] Open  : open a mapfile
-[X] Reset : reset the game
-[C] Step  : advance current game by one step
-[V] Play  : toggle autostep mode
+[O] Open  : open a mapfile
+[R] Reset : reset the game
+[S] Step  : advance current game by one step
+[P] Play  : toggle autostep mode
 
 How to read the status bar:
 MAP: (G)old, (W)umpus, (P)it count

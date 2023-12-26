@@ -1,4 +1,3 @@
-#!/bin/env python3
 # GUI using Tkinter
 # NOTE: IT'S A CALLBACK MESS (?)
 
@@ -28,20 +27,16 @@ class WumpusGUI():
         self.root.title(WINDOW_TITLE)
         self.root.geometry('{}x{}'.format(1*WINDOW_UNIT + 13*TILE_SIZE, 2*WINDOW_UNIT + 15*TILE_SIZE))
         self.root.resizable(0, 0)
-        self.root.configure(background='#ffffff')
+        self.root.configure(background='#f0dcb4')
 
         # Buttons
         Style().configure('TButton', font=FONT, background='#ffffff')
-        self.button_open  = Button(text='@ OPEN' , command=self.map_open_dialog)
-        self.button_reset = Button(text='* RESET', command=self.game_reset)
-        self.button_step  = Button(text='> STEP' , command=self.game_step)
-        self.button_play  = Button(text='>> PLAY', command=self.game_play)
-
-        # Buttons/Callbacks: Keybindings
-        # On keypress, these also emit a second parameter called 'events'
-        # that is not really needed here. A lambda is thus used
-        # to ignore that event.
-        # https://codereview.stackexchange.com/a/193357
+        
+        self.button_open  = Button(text='OPEN' , command=self.map_open_dialog)
+        self.button_reset = Button(text='RESET', command=self.game_reset)
+        self.button_step  = Button(text='STEP' , command=self.game_step)
+        self.button_play  = Button(text='PLAY', command=self.game_play)
+       
         self.root.bind(KEYB_OPEN,      lambda event: self.map_open_dialog())
         self.root.bind(KEYB_RESET,     lambda event: self.game_reset())
         self.root.bind(KEYB_STEP,      lambda event: self.game_step())
@@ -230,7 +225,7 @@ class WumpusGUI():
             self.log_write('Autostep stopped')
         
         # Rebind buttons and keys
-        self.button_play['text'] = '>> PLAY'
+        self.button_play['text'] = 'PLAY'
         self.button_play['command'] = self.game_play
         self.root.bind(KEYB_AUTOSTEP, lambda event: self.game_play())
 

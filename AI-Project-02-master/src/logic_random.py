@@ -174,7 +174,7 @@ class SupperInteligentPlayer():
 
         location = map_object.location()
         self._viewed_vision[location[0]][location[1]] = True
-        print(self.get_neighbor())
+       # print(self.get_neighbor())
         adjacents = map_object.adjacents()
 
 
@@ -182,7 +182,7 @@ class SupperInteligentPlayer():
         # Pit
         if 'B' in current:
             if self._move_count == 0:
-                print("[L] Go to cave")
+               # print("[L] Go to cave")
 
                 # Climb out
                 return 'leave'
@@ -232,13 +232,13 @@ class SupperInteligentPlayer():
         safety_node = []
         entailed = self.entail()
         if entailed:
-            print("[KB] ", entailed)
+           # print("[KB] ", entailed)
             for node in self.get_neighbor():
                 if self.convert_wumpus(node) not in entailed and self.convert_pit(node) not in entailed:
                     safety_node.append(node)
         if self.is_giving_up == False:
             # If no other options
-            print("[+S] ", safety_node, len(entailed))
+           # print("[+S] ", safety_node, len(entailed))
             shuffle(adjacents)
             posible_move = set()
             for move in adjacents:
@@ -247,7 +247,7 @@ class SupperInteligentPlayer():
 
             for move in posible_move:
                 if not self._viewed_vision[move[0]][move[1]]:
-                    print("[A] move safety", move)
+                  #  print("[A] move safety", move)
                     return move
 
             is_moved = False
@@ -266,15 +266,15 @@ class SupperInteligentPlayer():
                 for move in posible_move:
                     if not self._viewed_vision[move[0]][move[1]]:
                         next_move = self.optimal_path(location, move)
-                        print("[A] Target ", next_move)
+                        #print("[A] Target ", next_move)
                         if next_move != -1:
-                            print("[A] Move out of adj ", next_move)
+                            #print("[A] Move out of adj ", next_move)
                             is_moved = True
                             return next_move
         self.is_giving_up = True
         init_location = map_object.init_location()
-        print("[L] Go to cave")
-        print("$: ", init_location, location)
+        #print("[L] Go to cave")
+       # print("$: ", init_location, location)
         next_move = self.optimal_path(location, init_location)
         if location == init_location:
             return ('leave')
