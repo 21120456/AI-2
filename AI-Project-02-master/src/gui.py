@@ -25,7 +25,7 @@ class WumpusGUI():
         # Root window
         self.root = Tk()
         self.root.title(WINDOW_TITLE)
-        self.root.geometry('{}x{}'.format(1*WINDOW_UNIT + 13*TILE_SIZE, 2*WINDOW_UNIT + 15*TILE_SIZE))
+        self.root.geometry('{}x{}'.format(1*WINDOW_UNIT + 13*TILE_SIZE, 2*WINDOW_UNIT + 23*TILE_SIZE))
         self.root.resizable(0, 0)
         self.root.configure(background='#f0dcb4')
 
@@ -52,19 +52,19 @@ class WumpusGUI():
         # Canvas
         self.canvas = Canvas (background='#000000')
         self.objects = {
-            'gold'          : PhotoImage(file=ASSETS_DIR + '/gold.png'),
-            'pit'           : PhotoImage(file=ASSETS_DIR + '/pit.png'),
-            'wumpus'        : PhotoImage(file=ASSETS_DIR + '/wumpus.png'),
-            'breeze'        : PhotoImage(file=ASSETS_DIR + '/breeze.png'),
-            'stench'        : PhotoImage(file=ASSETS_DIR + '/stench.png'),
-            'player_up'     : PhotoImage(file=ASSETS_DIR + '/player_up.png'),
-            'player_down'   : PhotoImage(file=ASSETS_DIR + '/player_down.png'),
-            'player_left'   : PhotoImage(file=ASSETS_DIR + '/player_left.png'),
-            'player_right'  : PhotoImage(file=ASSETS_DIR + '/player_right.png'),
-            'tile'          : PhotoImage(file=ASSETS_DIR + '/tile.png'),
-            'tile_hidden'   :      PhotoImage(file=ASSETS_DIR + '/tile_hidden_alpha80.png')
+            'gold'          : PhotoImage(file=ASSETS_DIR + '/gold.png').subsample(2,2),
+            'pit'           : PhotoImage(file=ASSETS_DIR + '/pit.png').subsample(2,2),
+            'wumpus'        : PhotoImage(file=ASSETS_DIR + '/wumpus.png').subsample(2,2),
+            'breeze'        : PhotoImage(file=ASSETS_DIR + '/breeze.png').subsample(2,2),
+            'stench'        : PhotoImage(file=ASSETS_DIR + '/stench.png').subsample(2,2),
+            'player_up'     : PhotoImage(file=ASSETS_DIR + '/player_up.png').subsample(2,2),
+            'player_down'   : PhotoImage(file=ASSETS_DIR + '/player_down.png').subsample(2,2),
+            'player_left'   : PhotoImage(file=ASSETS_DIR + '/player_left.png').subsample(2,2),
+            'player_right'  : PhotoImage(file=ASSETS_DIR + '/player_right.png').subsample(2,2),
+            'tile'          : PhotoImage(file=ASSETS_DIR + '/tile.png').subsample(2,2),
+            'tile_hidden'   :      PhotoImage(file=ASSETS_DIR + '/tile_hidden_alpha80.png').subsample(2,2)
                                 if TILES_SHOW_HIDDEN
-                              else PhotoImage(file=ASSETS_DIR + '/tile_hidden.png'),
+                              else PhotoImage(file=ASSETS_DIR + '/tile_hidden.png').subsample(2,2),
         }
 
         # Text views
@@ -75,13 +75,13 @@ class WumpusGUI():
         self.status.tag_configure        ('text-bold', font='-family {} -weight bold'.format(FONT))
 
         # Layout
-        self.button_open     .place(x=2*WINDOW_UNIT + 10*TILE_SIZE, y=5*WINDOW_UNIT, width=9.25*WINDOW_UNIT, height=3*WINDOW_UNIT)
-        self.button_reset    .place(x=2*WINDOW_UNIT + 10*TILE_SIZE, y=9*WINDOW_UNIT, width=9.25*WINDOW_UNIT, height=3*WINDOW_UNIT)
-        self.button_step     .place(x=2*WINDOW_UNIT + 10*TILE_SIZE, y=13*WINDOW_UNIT, width=9.25*WINDOW_UNIT, height=3*WINDOW_UNIT)
-        self.button_play     .place(x=2*WINDOW_UNIT + 10*TILE_SIZE, y=17*WINDOW_UNIT, width=9.25*WINDOW_UNIT, height=3*WINDOW_UNIT)
-        self.status          .place(x=1*WINDOW_UNIT, y=1*WINDOW_UNIT, width=3*WINDOW_UNIT + 12*TILE_SIZE, height=3*WINDOW_UNIT)
-        self.canvas          .place(x=1*WINDOW_UNIT, y=5*WINDOW_UNIT, width=10*TILE_SIZE, height=10*TILE_SIZE)
-        self.log             .place(x=1*WINDOW_UNIT, y=6*WINDOW_UNIT + 10*TILE_SIZE, width=3*WINDOW_UNIT + 12*TILE_SIZE, height=3*TILE_SIZE)
+        self.button_open     .place(x=2*WINDOW_UNIT + 10*TILE_SIZE, y=8*WINDOW_UNIT, width=9.25*WINDOW_UNIT, height=3*WINDOW_UNIT)
+        self.button_reset    .place(x=2*WINDOW_UNIT + 10*TILE_SIZE, y=12*WINDOW_UNIT, width=9.25*WINDOW_UNIT, height=3*WINDOW_UNIT)
+        self.button_step     .place(x=2*WINDOW_UNIT + 10*TILE_SIZE, y=16*WINDOW_UNIT, width=9.25*WINDOW_UNIT, height=3*WINDOW_UNIT)
+        self.button_play     .place(x=2*WINDOW_UNIT + 10*TILE_SIZE, y=20*WINDOW_UNIT, width=9.25*WINDOW_UNIT, height=3*WINDOW_UNIT)
+        self.status          .place(x=1*WINDOW_UNIT, y=1*WINDOW_UNIT, width=3*WINDOW_UNIT + 12*TILE_SIZE, height=6*WINDOW_UNIT)
+        self.canvas          .place(x=1*WINDOW_UNIT, y=8*WINDOW_UNIT, width=10*TILE_SIZE, height=10*TILE_SIZE)
+        self.log             .place(x=1*WINDOW_UNIT, y=9*WINDOW_UNIT + 10*TILE_SIZE, width=3*WINDOW_UNIT + 12*TILE_SIZE, height=10*TILE_SIZE)
         
         # Autostep / Game over
         self.__autostep_job_cancel_id = None

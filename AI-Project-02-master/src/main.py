@@ -24,8 +24,8 @@ MAPS_DIR   = BASE_DIR + '/maps'
 ASSETS_DIR = BASE_DIR + '/assets/' + ASSETS_THEME
 
 # GUI: constants
-TILE_SIZE   = 64
-WINDOW_UNIT = 16
+TILE_SIZE   = 32
+WINDOW_UNIT = 8
 
 # GUI: onboarding messages (status, log)
 ONBOARDING_MSG = [
