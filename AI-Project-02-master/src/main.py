@@ -7,6 +7,7 @@ ASSETS_THEME      = 'images'
 TILES_SHOW_HIDDEN = True
 WINDOW_TITLE      = 'Wumpus World'
 FONT              = 'Consolas'
+FONTBT = ('Consolas',10)
 AUTOSTEP_DELAY    = 105 # ms
 KEYB_OPEN         = 'o'
 KEYB_RESET        = 'r'
@@ -36,16 +37,16 @@ OPEN A MAP TO BEGIN.
 
 # (Log) keyboard shortcut hints
 """
-Use the buttons on GUI, or press the following keys:
-[O] Open  : open a mapfile
+Click the buttons on GUI, or you can use short key:
+[O] Open  : open and choose a mapfile
 [R] Reset : reset the game
-[S] Step  : advance current game by one step
-[P] Play  : toggle autostep mode
+[S] Step  : game run step by step
+[P] Play  : game auto run
 
-How to read the status bar:
-MAP: (G)old, (W)umpus, (P)it count
+Explain information of the status bar:
+MAP: G - gold, W -  wumpus, P - pit count
 PLAYER: current location and orientation,
-        (a)rrows used, (s)core
+        a - arrows used, s - score
 """
 ]
 

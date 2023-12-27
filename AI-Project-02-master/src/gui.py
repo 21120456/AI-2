@@ -11,7 +11,7 @@ from tkinter.ttk import *
 
 from main import BASE_DIR, ASSETS_DIR, MAPS_DIR
 from main import WINDOW_TITLE, WINDOW_UNIT, FONT, ONBOARDING_MSG
-from main import TILE_SIZE, TILES_SHOW_HIDDEN
+from main import TILE_SIZE, TILES_SHOW_HIDDEN, FONTBT
 from main import KEYB_OPEN, KEYB_RESET, KEYB_STEP, KEYB_AUTOSTEP, AUTOSTEP_DELAY
 
 class WumpusGUI():
@@ -25,14 +25,14 @@ class WumpusGUI():
         # Root window
         self.root = Tk()
         self.root.title(WINDOW_TITLE)
-        self.root.geometry('{}x{}'.format(1*WINDOW_UNIT + 13*TILE_SIZE, 2*WINDOW_UNIT + 23*TILE_SIZE))
+        self.root.geometry('{}x600'.format(1*WINDOW_UNIT + 13*TILE_SIZE, 2*WINDOW_UNIT + 23*TILE_SIZE))
         self.root.resizable(0, 0)
         self.root.configure(background='#f0dcb4')
-
+      
         # Buttons
-        Style().configure('TButton', font=FONT, background='#ffffff')
+        Style().configure('TButton', font=FONTBT, background='#0b8043')
         
-        self.button_open  = Button(text='OPEN' , command=self.map_open_dialog)
+        self.button_open  = Button(text='OPEN' ,command=self.map_open_dialog)
         self.button_reset = Button(text='RESET', command=self.game_reset)
         self.button_step  = Button(text='STEP' , command=self.game_step)
         self.button_play  = Button(text='PLAY', command=self.game_play)
@@ -68,8 +68,8 @@ class WumpusGUI():
         }
 
         # Text views
-        self.status_font = Font          (family=FONT, size=12)
-        self.log_font    = Font          (family=FONT, size=11)
+        self.status_font = Font          (family=FONT, size=10)
+        self.log_font    = Font          (family=FONT, size=10)
         self.status      = Text          (font=self.status_font,  background='#f0f0f0', foreground='#000000', relief=FLAT, state=DISABLED)
         self.log         = ScrolledText  (font=self.log_font,     background='#f0f0f0', foreground='#000000', relief=FLAT, state=DISABLED)
         self.status.tag_configure        ('text-bold', font='-family {} -weight bold'.format(FONT))
@@ -81,7 +81,7 @@ class WumpusGUI():
         self.button_play     .place(x=2*WINDOW_UNIT + 10*TILE_SIZE, y=20*WINDOW_UNIT, width=9.25*WINDOW_UNIT, height=3*WINDOW_UNIT)
         self.status          .place(x=1*WINDOW_UNIT, y=1*WINDOW_UNIT, width=3*WINDOW_UNIT + 12*TILE_SIZE, height=6*WINDOW_UNIT)
         self.canvas          .place(x=1*WINDOW_UNIT, y=8*WINDOW_UNIT, width=10*TILE_SIZE, height=10*TILE_SIZE)
-        self.log             .place(x=1*WINDOW_UNIT, y=9*WINDOW_UNIT + 10*TILE_SIZE, width=3*WINDOW_UNIT + 12*TILE_SIZE, height=10*TILE_SIZE)
+        self.log             .place(x=1*WINDOW_UNIT, y=9*WINDOW_UNIT + 10*TILE_SIZE, width=3*WINDOW_UNIT + 12*TILE_SIZE, height=6*TILE_SIZE)
         
         # Autostep / Game over
         self.__autostep_job_cancel_id = None
