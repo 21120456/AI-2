@@ -145,7 +145,7 @@ class SuperInteligentPlayer():
                 # Climb out
                 return 'leave'
             for each in adjacents:
-                if [-1*self._pit_mat[each[0]][each[1]]] not in self._clauses:
+                if [-1*self._pit_mat[each[0]][each[1]]] not in self._clauses and not self._viewed_vision[each[0]][each[1]]:
                     self._clauses.append([self._pit_mat[each[0]][each[1]]])
         else:
             for each in adjacents:
@@ -169,9 +169,7 @@ class SuperInteligentPlayer():
                         can_shoot -= 1
                 if self.__shoot_queue:
                     self._clauses.append(
-                        [-1*self._wumpus_mat[self.__shoot_queue[-1][1][0]][self.__shoot_queue[-1][1][1]]])
-                    # self._viewed_vision[self.__shoot_queue[-1][1]
-                    # [0]][self.__shoot_queue[-1][1][1]] = True
+                        [-1*self._wumpus_mat[self.__shoot_queue[-1][1][0]][self.__shoot_queue[-1][1][1]]])                    
                     if 'W' in map_object._map[self.__shoot_queue[-1][1][1]][self.__shoot_queue[-1][1][0]]:
                         while [self._pit_mat[self.__shoot_queue[-1][1][0]][self.__shoot_queue[-1][1][1]]] in self._clauses:
                             self._clauses.remove(
@@ -193,9 +191,8 @@ class SuperInteligentPlayer():
                 possible_move.add(move)
 
         for move in possible_move:
-            # if not self._viewed_vision[move[0]][move[1]]:
-            print("[A] move safety", move)
-            return move
+            if not self._viewed_vision[move[0]][move[1]]:
+                return move
 
         is_moved = False
         expand = set(adjacents.copy())
@@ -214,9 +211,7 @@ class SuperInteligentPlayer():
             for move in possible_move:
                 if not self._viewed_vision[move[0]][move[1]]:
                     next_move = self.optimal_path(location, move)
-                    print("[A] Target ", next_move)
                     if next_move != -1:
-                        print("[A] Move out of adj ", next_move)
                         is_moved = True
                         return next_move
                     
@@ -249,14 +244,11 @@ class SuperInteligentPlayer():
         safety_node = []
         entailed = self.entail() # using propositional logic to solve based on knowledge base
         if entailed:
-            print("[KB] ", entailed)
             for node in self.get_neighbour_of_visited():
                 if self.convert_wumpus(node) not in entailed and self.convert_pit(node) not in entailed:
                     safety_node.append(node)
 
         if self.is_giving_up == False:
-            # If no other options
-            # print("[+S] ", safety_node, len(entailed))
            handleResult =  self.handle_new_move(safety_node,adjacents,location)
            if handleResult:
             return handleResult
