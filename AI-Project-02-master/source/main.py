@@ -42,7 +42,7 @@ Click the buttons on GUI, or you can use short key:
 [R] Reset : reset the game
 [S] Step  : game run step by step
 [P] Play  : game auto run
-
+o
 Explain information of the status bar:
 MAP: G - gold, W -  wumpus, P - pit count
 PLAYER: current location and orientation,
